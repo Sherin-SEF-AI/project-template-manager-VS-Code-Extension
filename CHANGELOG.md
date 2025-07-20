@@ -5,6 +5,27 @@ All notable changes to the "Template Hub" extension will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2024-07-20
+
+### Fixed
+- Completely restructured extension with new command namespace (templateHub.*)
+- Fixed activation events to use "*" for immediate activation
+- Simplified command structure for maximum compatibility
+- Fixed configuration namespace conflicts
+- Ensured all commands are properly registered and discoverable
+
+### Added
+- New simplified command structure with templateHub.* namespace
+- Immediate activation on VS Code startup
+- Enhanced user feedback with emojis and clear messages
+- Production-ready command registration
+
+### Changed
+- Changed from projectTemplateManager.* to templateHub.* commands
+- Updated all configuration settings to use templateHub namespace
+- Simplified activation events for guaranteed activation
+- Improved error handling and user experience
+
 ## [1.0.3] - 2024-07-20
 
 ### Fixed

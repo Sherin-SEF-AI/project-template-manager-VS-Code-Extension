@@ -2,7 +2,7 @@
   "name": "vscode-project-templates",
   "displayName": "Template Hub",
   "description": "Create, manage, and use project templates with variable substitution",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "sherinjosephroy",
   "author": "Sherin Joseph Roy <sherin.joseph2217@gmail.com>",
   "engines": {
@@ -22,76 +22,71 @@
     "variable-substitution"
   ],
   "activationEvents": [
-    "onStartupFinished"
+    "*"
   ],
-  "main": "out/extension.js",
+  "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "projectTemplateManager.test",
+        "command": "templateHub.test",
         "title": "Test Template Hub",
         "category": "Template Hub"
       },
       {
-        "command": "projectTemplateManager.createTemplate",
-        "title": "Create Template from Current Project",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.createProjectFromTemplate",
-        "title": "Create Project from Template",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.importTemplate",
-        "title": "Import Template",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.exportTemplate",
-        "title": "Export Template",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.refreshTemplates",
-        "title": "Refresh Templates",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.editTemplate",
-        "title": "Edit Template",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.deleteTemplate",
-        "title": "Delete Template",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.duplicateTemplate",
-        "title": "Duplicate Template",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.previewTemplate",
-        "title": "Preview Template",
-        "category": "Template Hub"
-      },
-      {
-        "command": "projectTemplateManager.openTemplateHub",
+        "command": "templateHub.openHub",
         "title": "Open Template Hub",
         "category": "Template Hub"
       },
       {
-        "command": "projectTemplateManager.useTemplate",
+        "command": "templateHub.createTemplate",
+        "title": "Create Template from Current Project",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.useTemplate",
         "title": "Use Template",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.importTemplate",
+        "title": "Import Template",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.exportTemplate",
+        "title": "Export Template",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.refreshTemplates",
+        "title": "Refresh Templates",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.editTemplate",
+        "title": "Edit Template",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.deleteTemplate",
+        "title": "Delete Template",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.duplicateTemplate",
+        "title": "Duplicate Template",
+        "category": "Template Hub"
+      },
+      {
+        "command": "templateHub.previewTemplate",
+        "title": "Preview Template",
         "category": "Template Hub"
       }
     ],
     "views": {
-      "projectTemplateManager.sidebar": [
+      "templateHub.sidebar": [
         {
-          "id": "projectTemplateManager.templateExplorer",
+          "id": "templateHub.templateExplorer",
           "name": "Templates",
           "when": "true"
         }
@@ -100,8 +95,8 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "projectTemplateManager.sidebar",
-          "title": "Project Templates",
+          "id": "templateHub.sidebar",
+          "title": "Template Hub",
           "icon": "resources/template-icon.svg"
         }
       ]
@@ -109,73 +104,73 @@
     "menus": {
       "view/title": [
         {
-          "command": "projectTemplateManager.refreshTemplates",
-          "when": "view == projectTemplateManager.templateExplorer",
+          "command": "templateHub.refreshTemplates",
+          "when": "view == templateHub.templateExplorer",
           "group": "navigation"
         },
         {
-          "command": "projectTemplateManager.createTemplate",
-          "when": "view == projectTemplateManager.templateExplorer",
+          "command": "templateHub.createTemplate",
+          "when": "view == templateHub.templateExplorer",
           "group": "navigation"
         },
         {
-          "command": "projectTemplateManager.importTemplate",
-          "when": "view == projectTemplateManager.templateExplorer",
+          "command": "templateHub.importTemplate",
+          "when": "view == templateHub.templateExplorer",
           "group": "navigation"
         }
       ],
       "view/item/context": [
         {
-          "command": "projectTemplateManager.createProjectFromTemplate",
-          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "command": "templateHub.useTemplate",
+          "when": "view == templateHub.templateExplorer && viewItem == template",
           "group": "inline"
         },
         {
-          "command": "projectTemplateManager.previewTemplate",
-          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "command": "templateHub.previewTemplate",
+          "when": "view == templateHub.templateExplorer && viewItem == template",
           "group": "inline"
         },
         {
-          "command": "projectTemplateManager.editTemplate",
-          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "command": "templateHub.editTemplate",
+          "when": "view == templateHub.templateExplorer && viewItem == template",
           "group": "inline"
         },
         {
-          "command": "projectTemplateManager.duplicateTemplate",
-          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "command": "templateHub.duplicateTemplate",
+          "when": "view == templateHub.templateExplorer && viewItem == template",
           "group": "inline"
         },
         {
-          "command": "projectTemplateManager.exportTemplate",
-          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "command": "templateHub.exportTemplate",
+          "when": "view == templateHub.templateExplorer && viewItem == template",
           "group": "inline"
         },
         {
-          "command": "projectTemplateManager.deleteTemplate",
-          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "command": "templateHub.deleteTemplate",
+          "when": "view == templateHub.templateExplorer && viewItem == template",
           "group": "inline"
         }
       ]
     },
     "configuration": {
-      "title": "Project Template Manager",
+      "title": "Template Hub",
       "properties": {
-        "projectTemplateManager.templatesPath": {
+        "templateHub.templatesPath": {
           "type": "string",
           "default": "~/.vscode/templates",
           "description": "Path where templates are stored"
         },
-        "projectTemplateManager.defaultAuthor": {
+        "templateHub.defaultAuthor": {
           "type": "string",
           "default": "",
           "description": "Default author name for new templates"
         },
-        "projectTemplateManager.defaultEmail": {
+        "templateHub.defaultEmail": {
           "type": "string",
           "default": "",
           "description": "Default email for new templates"
         },
-        "projectTemplateManager.autoRefresh": {
+        "templateHub.autoRefresh": {
           "type": "boolean",
           "default": true,
           "description": "Automatically refresh templates when files change"

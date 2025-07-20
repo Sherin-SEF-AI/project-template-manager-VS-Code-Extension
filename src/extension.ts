@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         // Register template explorer provider
         const templateExplorerProvider = new TemplateExplorerProvider(templateManager);
-        vscode.window.registerTreeDataProvider('projectTemplateManager.templateExplorer', templateExplorerProvider);
+        vscode.window.registerTreeDataProvider('templateHub.templateExplorer', templateExplorerProvider);
 
         // Register webview providers
         const variableInputProvider = new VariableInputProvider(context.extensionUri);
@@ -22,81 +22,76 @@ export function activate(context: vscode.ExtensionContext) {
         const templateEditorProvider = new TemplateEditorProvider(context.extensionUri);
 
         context.subscriptions.push(
-            vscode.window.registerWebviewViewProvider('projectTemplateManager.variableInput', variableInputProvider),
-            vscode.window.registerWebviewViewProvider('projectTemplateManager.templatePreview', templatePreviewProvider),
-            vscode.window.registerWebviewViewProvider('projectTemplateManager.templateEditor', templateEditorProvider)
+            vscode.window.registerWebviewViewProvider('templateHub.variableInput', variableInputProvider),
+            vscode.window.registerWebviewViewProvider('templateHub.templatePreview', templatePreviewProvider),
+            vscode.window.registerWebviewViewProvider('templateHub.templateEditor', templateEditorProvider)
         );
 
-        // Register basic commands with simple implementations
+        // Register all commands with simple implementations
         const commands = [
-            // Simple test command
-            vscode.commands.registerCommand('projectTemplateManager.test', () => {
-                vscode.window.showInformationMessage('Template Hub is working!');
+            // Test command - this should definitely work
+            vscode.commands.registerCommand('templateHub.test', () => {
+                vscode.window.showInformationMessage('🎉 Template Hub is working perfectly!');
+                console.log('Template Hub test command executed successfully');
             }),
 
             // Open Template Hub command
-            vscode.commands.registerCommand('projectTemplateManager.openTemplateHub', () => {
-                vscode.window.showInformationMessage('Opening Template Hub...');
-                vscode.commands.executeCommand('workbench.view.extension.projectTemplateManager-sidebar');
+            vscode.commands.registerCommand('templateHub.openHub', () => {
+                vscode.window.showInformationMessage('Opening Template Hub sidebar...');
+                vscode.commands.executeCommand('workbench.view.extension.templateHub-sidebar');
             }),
 
             // Use Template command
-            vscode.commands.registerCommand('projectTemplateManager.useTemplate', () => {
-                vscode.window.showInformationMessage('Use Template command triggered!');
+            vscode.commands.registerCommand('templateHub.useTemplate', () => {
+                vscode.window.showInformationMessage('Use Template command executed!');
                 templateManager.showTemplateSelection();
             }),
 
             // Create Template command
-            vscode.commands.registerCommand('projectTemplateManager.createTemplate', () => {
-                vscode.window.showInformationMessage('Create Template command triggered!');
+            vscode.commands.registerCommand('templateHub.createTemplate', () => {
+                vscode.window.showInformationMessage('Create Template command executed!');
                 templateManager.createTemplateFromCurrentProject();
             }),
 
-            // Create Project from Template command
-            vscode.commands.registerCommand('projectTemplateManager.createProjectFromTemplate', (template) => {
-                vscode.window.showInformationMessage('Create Project from Template command triggered!');
-                templateManager.createProjectFromTemplate(template);
-            }),
-
             // Import Template command
-            vscode.commands.registerCommand('projectTemplateManager.importTemplate', () => {
-                vscode.window.showInformationMessage('Import Template command triggered!');
+            vscode.commands.registerCommand('templateHub.importTemplate', () => {
+                vscode.window.showInformationMessage('Import Template command executed!');
                 templateManager.importTemplate();
             }),
 
             // Export Template command
-            vscode.commands.registerCommand('projectTemplateManager.exportTemplate', (template) => {
-                vscode.window.showInformationMessage('Export Template command triggered!');
+            vscode.commands.registerCommand('templateHub.exportTemplate', (template) => {
+                vscode.window.showInformationMessage('Export Template command executed!');
                 templateManager.exportTemplate(template);
             }),
 
             // Refresh Templates command
-            vscode.commands.registerCommand('projectTemplateManager.refreshTemplates', () => {
+            vscode.commands.registerCommand('templateHub.refreshTemplates', () => {
                 vscode.window.showInformationMessage('Refreshing templates...');
                 templateExplorerProvider.refresh();
             }),
 
             // Edit Template command
-            vscode.commands.registerCommand('projectTemplateManager.editTemplate', (template) => {
-                vscode.window.showInformationMessage('Edit Template command triggered!');
+            vscode.commands.registerCommand('templateHub.editTemplate', (template) => {
+                vscode.window.showInformationMessage('Edit Template command executed!');
                 templateManager.editTemplate(template);
             }),
 
             // Delete Template command
-            vscode.commands.registerCommand('projectTemplateManager.deleteTemplate', (template) => {
-                vscode.window.showInformationMessage('Delete Template command triggered!');
+            vscode.commands.registerCommand('templateHub.deleteTemplate', (template) => {
+                vscode.window.showInformationMessage('Delete Template command executed!');
                 templateManager.deleteTemplate(template);
             }),
 
             // Duplicate Template command
-            vscode.commands.registerCommand('projectTemplateManager.duplicateTemplate', (template) => {
-                vscode.window.showInformationMessage('Duplicate Template command triggered!');
+            vscode.commands.registerCommand('templateHub.duplicateTemplate', (template) => {
+                vscode.window.showInformationMessage('Duplicate Template command executed!');
                 templateManager.duplicateTemplate(template);
             }),
 
             // Preview Template command
-            vscode.commands.registerCommand('projectTemplateManager.previewTemplate', (template) => {
-                vscode.window.showInformationMessage('Preview Template command triggered!');
+            vscode.commands.registerCommand('templateHub.previewTemplate', (template) => {
+                vscode.window.showInformationMessage('Preview Template command executed!');
                 templateManager.previewTemplate(template);
             })
         ];
@@ -104,7 +99,7 @@ export function activate(context: vscode.ExtensionContext) {
         context.subscriptions.push(...commands);
 
         // Set up file watchers for auto-refresh
-        const config = vscode.workspace.getConfiguration('projectTemplateManager');
+        const config = vscode.workspace.getConfiguration('templateHub');
         if (config.get('autoRefresh', true)) {
             const templatesPath = templateManager.getTemplatesPath();
             const fileWatcher = vscode.workspace.createFileSystemWatcher(`${templatesPath}/**/*`);
@@ -117,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         console.log('Template Hub commands registered successfully!');
-        vscode.window.showInformationMessage('Template Hub is now active and ready to use!');
+        vscode.window.showInformationMessage('🚀 Template Hub is now active and ready to use!');
         
     } catch (error) {
         console.error('Failed to activate Template Hub:', error);

@@ -19,7 +19,7 @@ export class TemplateManager {
     }
 
     public getTemplatesPath(): string {
-        const config = vscode.workspace.getConfiguration('projectTemplateManager');
+        const config = vscode.workspace.getConfiguration('templateHub');
         const configuredPath = config.get('templatesPath', '~/.vscode/templates');
         return configuredPath.replace('~', os.homedir());
     }
