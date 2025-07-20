@@ -2,7 +2,7 @@
   "name": "vscode-project-templates",
   "displayName": "Template Hub",
   "description": "Create, manage, and use project templates with variable substitution",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "sherinjosephroy",
   "author": "Sherin Joseph Roy <sherin.joseph2217@gmail.com>",
   "engines": {
@@ -22,13 +22,7 @@
     "variable-substitution"
   ],
   "activationEvents": [
-    "onCommand:projectTemplateManager.createTemplate",
-    "onCommand:projectTemplateManager.createProjectFromTemplate",
-    "onCommand:projectTemplateManager.importTemplate",
-    "onCommand:projectTemplateManager.exportTemplate",
-    "onCommand:projectTemplateManager.openTemplateHub",
-    "onCommand:projectTemplateManager.useTemplate",
-    "onView:projectTemplateManager.templateExplorer"
+    "onStartupFinished"
   ],
   "main": "out/extension.js",
   "contributes": {

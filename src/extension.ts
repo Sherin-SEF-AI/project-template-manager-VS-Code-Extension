@@ -6,10 +6,11 @@ import { TemplatePreviewProvider } from './providers/templatePreviewProvider';
 import { TemplateEditorProvider } from './providers/templateEditorProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Project Template Manager is now active!');
+    console.log('Template Hub is now active!');
 
-    // Initialize template manager
-    const templateManager = new TemplateManager(context);
+    try {
+        // Initialize template manager
+        const templateManager = new TemplateManager(context);
 
     // Register template explorer provider
     const templateExplorerProvider = new TemplateExplorerProvider(templateManager);
@@ -77,8 +78,14 @@ export function activate(context: vscode.ExtensionContext) {
         
         context.subscriptions.push(fileWatcher);
     }
+
+    console.log('Template Hub commands registered successfully!');
+    } catch (error) {
+        console.error('Failed to activate Template Hub:', error);
+        vscode.window.showErrorMessage(`Failed to activate Template Hub: ${error}`);
+    }
 }
 
 export function deactivate() {
-    console.log('Project Template Manager is now deactivated!');
+    console.log('Template Hub is now deactivated!');
 } 
