@@ -26,6 +26,8 @@
     "onCommand:projectTemplateManager.createProjectFromTemplate",
     "onCommand:projectTemplateManager.importTemplate",
     "onCommand:projectTemplateManager.exportTemplate",
+    "onCommand:projectTemplateManager.openTemplateHub",
+    "onCommand:projectTemplateManager.useTemplate",
     "onView:projectTemplateManager.templateExplorer"
   ],
   "main": "out/extension.js",
@@ -34,47 +36,57 @@
       {
         "command": "projectTemplateManager.createTemplate",
         "title": "Create Template from Current Project",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.createProjectFromTemplate",
         "title": "Create Project from Template",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.importTemplate",
         "title": "Import Template",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.exportTemplate",
         "title": "Export Template",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.refreshTemplates",
         "title": "Refresh Templates",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.editTemplate",
         "title": "Edit Template",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.deleteTemplate",
         "title": "Delete Template",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.duplicateTemplate",
         "title": "Duplicate Template",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
       },
       {
         "command": "projectTemplateManager.previewTemplate",
         "title": "Preview Template",
-        "category": "Project Template Manager"
+        "category": "Template Hub"
+      },
+      {
+        "command": "projectTemplateManager.openTemplateHub",
+        "title": "Open Template Hub",
+        "category": "Template Hub"
+      },
+      {
+        "command": "projectTemplateManager.useTemplate",
+        "title": "Use Template",
+        "category": "Template Hub"
       }
     ],
     "views": {

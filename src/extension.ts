@@ -54,6 +54,12 @@ export function activate(context: vscode.ExtensionContext) {
         }),
         vscode.commands.registerCommand('projectTemplateManager.previewTemplate', (template) => {
             templateManager.previewTemplate(template);
+        }),
+        vscode.commands.registerCommand('projectTemplateManager.openTemplateHub', () => {
+            vscode.commands.executeCommand('workbench.view.extension.projectTemplateManager-sidebar');
+        }),
+        vscode.commands.registerCommand('projectTemplateManager.useTemplate', () => {
+            templateManager.showTemplateSelection();
         })
     ];
 

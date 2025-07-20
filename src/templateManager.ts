@@ -387,4 +387,25 @@ export class TemplateManager {
             .replace(/-+/g, '-')
             .replace(/^-|-$/g, '');
     }
+
+    public async showTemplateSelection(): Promise<void> {
+        const templates = await this.getAllTemplates();
+        
+        if (templates.length === 0) {
+            vscode.window.showInformationMessage('No templates available. Create a template first!');
+            return;
+        }
+
+        const templateNames = templates.map(t => t.config.name);
+        const selectedTemplateName = await vscode.window.showQuickPick(templateNames, {
+            placeHolder: 'Select a template to use'
+        });
+
+        if (selectedTemplateName) {
+            const selectedTemplate = templates.find(t => t.config.name === selectedTemplateName);
+            if (selectedTemplate) {
+                await this.createProjectFromTemplate(selectedTemplate);
+            }
+        }
+    }
 } 
