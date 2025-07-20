@@ -1,0 +1,213 @@
+{
+  "name": "vscode-project-templates",
+  "displayName": "Template Hub",
+  "description": "Create, manage, and use project templates with variable substitution",
+  "version": "1.0.0",
+  "publisher": "sherinjosephroy",
+  "author": "Sherin Joseph Roy <sherin.joseph2217@gmail.com>",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "template",
+    "project",
+    "scaffold",
+    "boilerplate",
+    "generator",
+    "vscode-extension",
+    "project-templates",
+    "variable-substitution"
+  ],
+  "activationEvents": [
+    "onCommand:projectTemplateManager.createTemplate",
+    "onCommand:projectTemplateManager.createProjectFromTemplate",
+    "onCommand:projectTemplateManager.importTemplate",
+    "onCommand:projectTemplateManager.exportTemplate",
+    "onView:projectTemplateManager.templateExplorer"
+  ],
+  "main": "out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "projectTemplateManager.createTemplate",
+        "title": "Create Template from Current Project",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.createProjectFromTemplate",
+        "title": "Create Project from Template",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.importTemplate",
+        "title": "Import Template",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.exportTemplate",
+        "title": "Export Template",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.refreshTemplates",
+        "title": "Refresh Templates",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.editTemplate",
+        "title": "Edit Template",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.deleteTemplate",
+        "title": "Delete Template",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.duplicateTemplate",
+        "title": "Duplicate Template",
+        "category": "Project Template Manager"
+      },
+      {
+        "command": "projectTemplateManager.previewTemplate",
+        "title": "Preview Template",
+        "category": "Project Template Manager"
+      }
+    ],
+    "views": {
+      "projectTemplateManager.sidebar": [
+        {
+          "id": "projectTemplateManager.templateExplorer",
+          "name": "Templates",
+          "when": "true"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "projectTemplateManager.sidebar",
+          "title": "Project Templates",
+          "icon": "resources/template-icon.svg"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "projectTemplateManager.refreshTemplates",
+          "when": "view == projectTemplateManager.templateExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "projectTemplateManager.createTemplate",
+          "when": "view == projectTemplateManager.templateExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "projectTemplateManager.importTemplate",
+          "when": "view == projectTemplateManager.templateExplorer",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "projectTemplateManager.createProjectFromTemplate",
+          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "projectTemplateManager.previewTemplate",
+          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "projectTemplateManager.editTemplate",
+          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "projectTemplateManager.duplicateTemplate",
+          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "projectTemplateManager.exportTemplate",
+          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "projectTemplateManager.deleteTemplate",
+          "when": "view == projectTemplateManager.templateExplorer && viewItem == template",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Project Template Manager",
+      "properties": {
+        "projectTemplateManager.templatesPath": {
+          "type": "string",
+          "default": "~/.vscode/templates",
+          "description": "Path where templates are stored"
+        },
+        "projectTemplateManager.defaultAuthor": {
+          "type": "string",
+          "default": "",
+          "description": "Default author name for new templates"
+        },
+        "projectTemplateManager.defaultEmail": {
+          "type": "string",
+          "default": "",
+          "description": "Default email for new templates"
+        },
+        "projectTemplateManager.autoRefresh": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically refresh templates when files change"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/vsce": "^2.32.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "extract-zip": "^2.0.1",
+    "fs-extra": "^11.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sherin-SEF-AI/project-template-manager-VS-Code-Extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sherin-SEF-AI/project-template-manager-VS-Code-Extension/issues"
+  },
+  "homepage": "https://github.com/Sherin-SEF-AI/project-template-manager-VS-Code-Extension#readme",
+  "license": "MIT",
+  "icon": "resources/extension-icon.png",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  }
+}

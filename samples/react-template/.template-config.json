@@ -1,0 +1,64 @@
+{
+  "name": "React TypeScript Template",
+  "description": "A modern React application template with TypeScript, Vite, and Tailwind CSS",
+  "author": "Sherin Joseph Roy",
+  "email": "sherin.joseph2217@gmail.com",
+  "version": "1.0.0",
+  "tags": ["react", "typescript", "vite", "tailwind", "web"],
+  "category": "Web Development",
+  "variables": [
+    {
+      "name": "appName",
+      "type": "string",
+      "description": "Application name (used in package.json and title)",
+      "required": true,
+      "defaultValue": "my-react-app",
+      "validation": {
+        "pattern": "^[a-z0-9-]+$",
+        "minLength": 3,
+        "maxLength": 50
+      }
+    },
+    {
+      "name": "useTailwind",
+      "type": "boolean",
+      "description": "Include Tailwind CSS for styling",
+      "required": false,
+      "defaultValue": true
+    },
+    {
+      "name": "useRouter",
+      "type": "boolean",
+      "description": "Include React Router for navigation",
+      "required": false,
+      "defaultValue": false
+    },
+    {
+      "name": "useStateManagement",
+      "type": "select",
+      "description": "Choose state management solution",
+      "required": false,
+      "options": ["none", "zustand", "redux-toolkit", "jotai"],
+      "defaultValue": "none"
+    },
+    {
+      "name": "useTesting",
+      "type": "boolean",
+      "description": "Include testing setup with Vitest",
+      "required": false,
+      "defaultValue": true
+    }
+  ],
+  "excludePatterns": [
+    ".git/**",
+    "node_modules/**",
+    ".vscode/**",
+    "dist/**",
+    "coverage/**"
+  ],
+  "includePatterns": [
+    "**/*"
+  ],
+  "createdAt": "2024-01-01T00:00:00.000Z",
+  "updatedAt": "2024-01-01T00:00:00.000Z"
+} 
