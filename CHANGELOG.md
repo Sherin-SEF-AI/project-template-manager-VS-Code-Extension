@@ -5,6 +5,25 @@ All notable changes to the "Template Hub" extension will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2024-07-20
+
+### Fixed
+- Completely rewrote command registration with simple, reliable implementations
+- Added test command for easy verification
+- Added user feedback messages for all commands
+- Enhanced error handling and debugging
+- Fixed command discovery and activation issues
+
+### Added
+- New test command: "Test Template Hub" for easy verification
+- User feedback messages for all command executions
+- Enhanced logging and debugging information
+
+### Changed
+- Simplified command implementations for better reliability
+- Added immediate user feedback for command execution
+- Improved extension startup and activation process
+
 ## [1.0.2] - 2024-07-20
 
 ### Fixed
