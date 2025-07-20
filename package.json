@@ -2,7 +2,7 @@
   "name": "vscode-project-templates",
   "displayName": "Template Hub",
   "description": "Create, manage, and use project templates with variable substitution",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "sherinjosephroy",
   "author": "Sherin Joseph Roy <sherin.joseph2217@gmail.com>",
   "engines": {

@@ -15,4 +15,5 @@ node_modules/**
 samples/**
 test-project/**
 *.md
-!README.md 
+!README.md
+!CHANGELOG.md 
